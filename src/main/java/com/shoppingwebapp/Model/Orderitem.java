@@ -15,18 +15,20 @@ import jakarta.persistence.OneToOne;
 @Entity
 public class Orderitem {
 	@Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer order_item_id;
-	
+
 	private String status;
-	
+
 	private Date date;
-	
+
+	private Date ticket_date;
+
 	@ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "order_id")
+	@JoinColumn(name = "order_id")
 	@JsonBackReference
 	private Order_detail order_detail;
-	
+
 	@OneToOne
 	@JoinColumn(name = "product_detail_id", unique = true)
 //	@JsonBackReference
@@ -98,14 +100,30 @@ public class Orderitem {
 		this.productdetail = productdetail;
 	}
 
+
+
+	public Date getTicket_date() {
+		return ticket_date;
+	}
+
+
+
+
+	public void setTicket_date(Date ticket_date) {
+		this.ticket_date = ticket_date;
+	}
+
+
+
+
 	@Override
 	public String toString() {
 		return "Orderitem [order_item_id=" + order_item_id + ", status=" + status + ", date=" + date + "]";
 	}
 
-	
 
-	
-	
-	
+
+
+
+
 }

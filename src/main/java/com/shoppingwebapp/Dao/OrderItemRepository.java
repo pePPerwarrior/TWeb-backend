@@ -11,7 +11,7 @@ import java.util.List;
 //oi.order_item_id ,m.username,od.contact_name ,od.payment_date ,od.payment_method , pd.price , p.name
 public interface OrderItemRepository extends JpaRepository<Orderitem,Integer> {
     @Query( "SELECT new com.shoppingwebapp.DTO.OrderInfoDTO" +
-            "(m.id, m.username,od.contact_name,oi.date,od.payment_method, od.total_amount, oi.order_item_id, pd.price, pd.product_detail_id, pd.name, p.name)" +
+            "(m.id, m.username,oi.date,od.payment_method, od.total_amount, oi.order_item_id, pd.price, pd.product_detail_id, pd.name, p.name)" +
             " FROM Member m " +
             " JOIN  m.order_detail od " +
             " JOIN  od.orderitem oi " +

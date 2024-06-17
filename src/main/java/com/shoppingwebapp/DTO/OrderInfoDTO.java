@@ -5,7 +5,6 @@ import java.sql.Date;
 public class OrderInfoDTO {
     private Integer id;
     private String username;
-    private String contact_name;
     private Date order_date;
     private String payment_method;
     private Integer total_amount;
@@ -15,10 +14,9 @@ public class OrderInfoDTO {
     private String name;
     private String name2;
 
-    public OrderInfoDTO(Integer id, String username, String contact_name, Date order_date, String payment_method, Integer total_amount, Integer order_item_id, Integer price,Integer product_detail_id, String name, String name2) {
+    public OrderInfoDTO(Integer id, String username, Date order_date, String payment_method, Integer total_amount, Integer order_item_id, Integer price,Integer product_detail_id, String name, String name2) {
         this.id = id;
         this.username = username;
-        this.contact_name = contact_name;
         this.order_date = order_date;
         this.payment_method = payment_method;
         this.total_amount = total_amount;
@@ -43,14 +41,6 @@ public class OrderInfoDTO {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getContact_name() {
-        return contact_name;
-    }
-
-    public void setContact_name(String contact_name) {
-        this.contact_name = contact_name;
     }
 
     public Date getOrder_date() {
@@ -117,24 +107,4 @@ public class OrderInfoDTO {
         this.price = price;
     }
 
-    //    public OrderInfoDTO(Integer id, String username) {
-//        this.id = id;
-//        this.username = username;
-//    }
-//
-//    public Integer getId() {
-//        return id;
-//    }
-//
-//    public void setId(Integer id) {
-//        this.id = id;
-//    }
-//
-//    public String getUsername() {
-//        return username;
-//    }
-//
-//    public void setUsername(String username) {
-//        this.username = username;
-//    }
 }

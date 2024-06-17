@@ -14,7 +14,7 @@ public class AppConfig {
     public FilterRegistrationBean<AccessLogFilter> registerFilter() {
         FilterRegistrationBean<AccessLogFilter> registrationBean = new FilterRegistrationBean<>();
         registrationBean.setFilter(new AccessLogFilter());
-        registrationBean.addUrlPatterns("/category*"); 
+        registrationBean.addUrlPatterns("/category*");
         registrationBean.setOrder(1);
         return registrationBean;
     }

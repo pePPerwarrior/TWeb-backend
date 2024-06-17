@@ -15,39 +15,33 @@ import jakarta.persistence.*;
 public class Order_detail{
 
 	@Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 
 	private Integer order_id;
-	
+
 	private Date order_date;
-	
+
 	private Integer total_amount;
-	
+
 	private String tradedesc;
-	
+
 	private String payment_method;
-	
+
 	private String payment_status;
-	
+
 	private Date payment_date;
-	
+
 	private String order_status;
-	
-	private String contact_name;
-	
-	private String contact_phone;
-	
-	private String contact_email;
-	
+
 	@OneToMany(mappedBy = "order_detail", cascade = CascadeType.ALL)
 //	@JsonBackReference
 
 	private List<Orderitem> orderitem = new ArrayList<>();;
-	
-	
+
+
 	@JsonIgnore
 	@ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id")
+	@JoinColumn(name = "id")
 //	@JsonBackReference
 	private Member member;
 
@@ -55,19 +49,25 @@ public class Order_detail{
 		super();
 	}
 
-	public Order_detail(String contact_email, String contact_phone, String contact_name, String order_status, Date payment_date, String payment_status, String payment_method, String tradedesc, Integer total_amount, Date order_date, Integer order_id) {
-		this.contact_email = contact_email; //
-		this.contact_phone = contact_phone; //
-		this.contact_name = contact_name; //
-		this.order_status = order_status; //
-		this.payment_date = payment_date; //
-		this.payment_status = payment_status;
-		this.payment_method = payment_method; //
-		this.tradedesc = tradedesc;
-		this.total_amount = total_amount;
-		this.order_date = order_date;
+
+
+	public Order_detail(Integer order_id, Date order_date, Integer total_amount, String tradedesc,
+						String payment_method, String payment_status, Date payment_date, String order_status,
+						List<Orderitem> orderitem, Member member) {
+		super();
 		this.order_id = order_id;
+		this.order_date = order_date;
+		this.total_amount = total_amount;
+		this.tradedesc = tradedesc;
+		this.payment_method = payment_method;
+		this.payment_status = payment_status;
+		this.payment_date = payment_date;
+		this.order_status = order_status;
+		this.orderitem = orderitem;
+		this.member = member;
 	}
+
+
 
 	public Order_detail(Date order_date, Member member, String payment_method, String payment_status) {
 		this.order_date = order_date;
@@ -140,29 +140,6 @@ public class Order_detail{
 		this.order_status = order_status;
 	}
 
-	public String getContact_name() {
-		return contact_name;
-	}
-
-	public void setContact_name(String contact_name) {
-		this.contact_name = contact_name;
-	}
-
-	public String getContact_phone() {
-		return contact_phone;
-	}
-
-	public void setContact_phone(String contact_phone) {
-		this.contact_phone = contact_phone;
-	}
-
-	public String getContact_email() {
-		return contact_email;
-	}
-
-	public void setContact_email(String contact_email) {
-		this.contact_email = contact_email;
-	}
 
 	public List<Orderitem> getOrderitem() {
 		return orderitem;
@@ -181,20 +158,15 @@ public class Order_detail{
 	}
 
 
+
 	@Override
 	public String toString() {
-		return "Order_detail{" +
-				"contact_email='" + contact_email + '\'' +
-				", contact_phone='" + contact_phone + '\'' +
-				", contact_name='" + contact_name + '\'' +
-				", order_status='" + order_status + '\'' +
-				", payment_date=" + payment_date +
-				", payment_status='" + payment_status + '\'' +
-				", payment_method='" + payment_method + '\'' +
-				", tradedesc='" + tradedesc + '\'' +
-				", total_amount=" + total_amount +
-				", order_date=" + order_date +
-				", order_id=" + order_id +
-				'}';
+		return "Order_detail [order_id=" + order_id + ", order_date=" + order_date + ", total_amount=" + total_amount
+				+ ", tradedesc=" + tradedesc + ", payment_method=" + payment_method + ", payment_status="
+				+ payment_status + ", payment_date=" + payment_date + ", order_status=" + order_status + ", orderitem="
+				+ orderitem + ", member=" + member + "]";
 	}
+
+
+
 }

@@ -23,7 +23,7 @@ public class AccessLogFilter extends OncePerRequestFilter {
 
 	@Autowired
 	private RequestDataRepository requestRe;
-	
+
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
@@ -32,13 +32,13 @@ public class AccessLogFilter extends OncePerRequestFilter {
 		String preferLanguage = request.getHeader("Accept-Language");
 		String platform = request.getHeader("Sec-Ch-Ua-Platform");
 		String ipAddress = request.getRemoteAddr();
-		
+
 		String[] arr = preferLanguage.split(";");
 //		System.out.println(arr[0]);
 
 		// 紀錄訪問訊息
 //		logger.info(
-//				  "Path: " + path 
+//				  "Path: " + path
 //				+ ", preferLanguage: " + arr[0]
 //				+ ", platform: " + platform
 //				+ ", IP Address: " + ipAddress
@@ -51,8 +51,8 @@ public class AccessLogFilter extends OncePerRequestFilter {
 	        requestData.setPlatform(platform);
 	        requestData.setPreferLanguage(arr[0]);
 	        requestRe.save(requestData);
-	    } 
-		
+	    }
+
 		filterChain.doFilter(request, response);
 	}
 }

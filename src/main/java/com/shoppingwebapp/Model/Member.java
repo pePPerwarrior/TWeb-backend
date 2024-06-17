@@ -21,7 +21,9 @@ public class Member {
     private String email;
 
     private String phone;
-    
+
+    private String img;
+
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
 //    @JsonBackReference
     private List<Order_detail> order_detail = new ArrayList<>();;
@@ -77,26 +79,26 @@ public class Member {
         isAdmin = admin;
     }
 
-	public List<Order_detail> getOrder_detail() {
-		return order_detail;
-	}
+    public List<Order_detail> getOrder_detail() {
+        return order_detail;
+    }
 
-	public void setOrder_detail(List<Order_detail> order_detail) {
-		this.order_detail = order_detail;
-	}
+    public void setOrder_detail(List<Order_detail> order_detail) {
+        this.order_detail = order_detail;
+    }
+
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
     public Member(){};
 
     public Member(String username, String password, String email, String phone) {}
-//    @Override
-//    public String toString() {
-//        return "Member{" +
-//                "id=" + id +
-//                ", username='" + username + '\'' +
-//                ", password='" + password + '\'' +
-//                ", email='" + email + '\'' +
-//                ", phone='" + phone + '\'' +
-//                '}';
-//    }
 
     @Override
     public String toString() {
@@ -106,6 +108,7 @@ public class Member {
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
+                ", img='" + img + '\'' +
                 ", order_detail=" + order_detail +
                 ", isAdmin=" + isAdmin +
                 '}';
